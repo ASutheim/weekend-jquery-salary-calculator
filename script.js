@@ -3,6 +3,7 @@ $(document).ready(onReady);
 function onReady() {
   console.log("Ready!");
   $(`#submit-btn`).on(`click`, handleSubmit);
+  $(`#employee-info-table`).on(`click`, `.delete-button`, handleDelete);
 }
 
 function handleSubmit(event) {
@@ -27,6 +28,12 @@ function handleSubmit(event) {
     <td>${idInput}</td>
     <td>${titleInput}</td>
     <td>${salaryInput}</td>
-    <td><button class = "delete-btn">❌</button></td>`
+    <td><button class = "delete-button">❌</button></td>`
   );
+}
+
+function handleDelete() {
+  //this makes the delete button work
+  console.log("employee deleted");
+  $(this).parent().parent().remove();
 }
