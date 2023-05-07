@@ -33,7 +33,7 @@ function handleSubmit(event) {
     lastName: lastNameInput,
     idNumber: idInput,
     title: titleInput,
-    salary: salaryInput,
+    salary: parseInt(salaryInput),
   };
 
   //This code pushes the new object to the array allEmployeeInfo
@@ -50,14 +50,17 @@ function handleDelete() {
   $(this).parent().parent().remove();
 }
 
-function updateSalaryTotal(allEmployeeInfo) {
-  let monthlyTotalCost = 0;
-  for (employeeInfo.salaryInfo of allEmployeeInfo) {
-    monthlyTotalCost += employeeInfo.salaryInfo;
+function updateSalaryTotal() {
+  console.log("Inside update salary function");
+  let annualTotalCost = 0;
+  for (let employee of allEmployeeInfo) {
+    console.log(employee);
+    annualTotalCost += employee.salary;
   }
-  return monthlyTotalCost;
+  let monthlyTotalCost = annualTotalCost / 12;
   console.log("Monthly Total Costs:", monthlyTotalCost);
-  $("#totalMonthly").append(monthlyTotalCost);
+  $("#totalMonthly").append(`<p>Total Monthly Costs: ${monthlyTotalCost}</p>`);
+  return monthlyTotalCost;
 }
 
 /*
