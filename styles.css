@@ -1,8 +1,8 @@
 /* GLOBAL TYPOGRAPHY STYLES */
 body {
-  background-color: #dcdcdc;
-  font-family: "Roboto", sans-serif;
-  color: #313131;
+  background-color: white;
+  font-family: "Arial", sans-serif;
+  color: black;
   font-size: 1.25em;
 }
 
@@ -44,7 +44,7 @@ h1 {
   font-size: 2.5em;
 }
 
-/* ADD AFFIRMATION FORM */
+/* Input */
 input {
   padding: 0.5em;
   width: 150px;
@@ -56,7 +56,7 @@ button {
   width: 75px;
 }
 
-/* AFFIRMATIONS TABLE */
+/*  Employee Info Table  */
 table {
   width: 100%;
   text-align: left;
@@ -65,8 +65,8 @@ table,
 th,
 td {
   border: 1px solid black;
-  border-collapse: collapse;
-  height: 2.15em;
+  height: 2em;
+  background-color: lightslategray;
 }
 th,
 td {

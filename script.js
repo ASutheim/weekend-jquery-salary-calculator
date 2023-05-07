@@ -1,16 +1,20 @@
 $(document).ready(onReady);
 
 function onReady() {
+  //This code adds event listeners to the DOM on page load
   console.log("Ready!");
   $(`#submit-btn`).on(`click`, handleSubmit);
   $(`#employee-info-table`).on(`click`, `.delete-button`, handleDelete);
 }
 
+//This array is where all the submitted information will be stored
 let allEmployeeInfo = [];
 
 function handleSubmit(event) {
+  //This code keeps the page from refreshing by default
   event.preventDefault();
 
+  //This code grabs the literal values entered into the input fields and intializes them as js variable
   let firstNameInput = $("#first-name-input").val();
   let lastNameInput = $("#last-name-input").val();
   let idInput = $("#id-input").val();
@@ -27,7 +31,7 @@ function handleSubmit(event) {
     <td><button class = "delete-button">❌</button></td>`
   );
 
-  //This code saves the inputted info to an object
+  //This code saves the inputted info as a new object
   let employeeInfo = {
     firstName: firstNameInput,
     lastName: lastNameInput,
@@ -40,6 +44,8 @@ function handleSubmit(event) {
   allEmployeeInfo.push(employeeInfo);
 
   console.log("New info submitted:", employeeInfo);
+
+  //This code calls the function to update the salary total when a new employee is added
 
   updateSalaryTotal(allEmployeeInfo);
 
@@ -60,27 +66,24 @@ function handleDelete() {
 
 function updateSalaryTotal() {
   console.log("Inside update salary function");
+
+  //Loops over employee info array and adds all of the salaries to get the yearly costs
+
   let annualTotalCost = 0;
   for (let employee of allEmployeeInfo) {
     console.log(employee);
     annualTotalCost += employee.salary;
   }
+
+  //Divides the annual costs by twelve to get the monthly costs
+
   let monthlyTotalCost = annualTotalCost / 12;
   console.log("Monthly Total Costs:", monthlyTotalCost);
-  $("#totalMonthly").append(`<p>Total Monthly Costs: ${monthlyTotalCost}</p>`);
-  if ((monthlyTotalCost > 20, 000)) {
-    ('document.getElementById(`#totalMonthly`).style.background = "red"');
+
+  //Checks monthly cost against budget and resets background color to red if cost is greater than 20k
+
+  if (monthlyTotalCost > 20000) {
+    document.getElementById("totalMonthly").style.backgroundColor = "red";
   }
   return monthlyTotalCost;
 }
-
-/*
-ideas about how to create the monthly costs sum: 
-
--grab the values from the #salary-input column of the table 
-  and push them to an array
--loop over the array to add all the values and return the result
--create a conditional that checks the result from above against the 
-  20,000 budget threshold and, if over that threshold, 
-  turns the background color red (not sure how to make js talk to css though!)
-*/
