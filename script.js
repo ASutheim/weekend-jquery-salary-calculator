@@ -6,6 +6,8 @@ function onReady() {
   $(`#employee-info-table`).on(`click`, `.delete-button`, handleDelete);
 }
 
+let allEmployeeInfo = [];
+
 function handleSubmit(event) {
   event.preventDefault();
 
@@ -15,11 +17,7 @@ function handleSubmit(event) {
   let titleInput = $("#title-input").val();
   let salaryInput = $("#salary-input").val();
 
-  //This code sends the submitted info to the console
-  console.log("Submit button clicked");
-  console.log(firstNameInput, lastNameInput, idInput, titleInput, salaryInput);
-
-  //This code sends the submitted info plus a delete button to the table on the DOM
+  //This code sends the submitted info plus a delete button to a new line on the table
   $(`#employee-info-table`).append(
     `<tr><td>${firstNameInput}</td>
     <td>${lastNameInput}</td>
@@ -28,12 +26,38 @@ function handleSubmit(event) {
     <td>${salaryInput}</td>
     <td><button class = "delete-button">❌</button></td>`
   );
+
+  //This code saves the inputted info to an object
+  let employeeInfo = {
+    firstName: firstNameInput,
+    lastName: lastNameInput,
+    idNumber: idInput,
+    title: titleInput,
+    salary: salaryInput,
+  };
+
+  //This code pushes the new object to the array allEmployeeInfo
+  allEmployeeInfo.push(employeeInfo);
+
+  console.log("New info submitted:", employeeInfo);
+
+  updateSalaryTotal(allEmployeeInfo);
 }
 
 function handleDelete() {
   //this makes the delete button work
   console.log("employee deleted");
   $(this).parent().parent().remove();
+}
+
+function updateSalaryTotal(allEmployeeInfo) {
+  let monthlyTotalCost = 0;
+  for (employeeInfo.salaryInfo of allEmployeeInfo) {
+    monthlyTotalCost += employeeInfo.salaryInfo;
+  }
+  return monthlyTotalCost;
+  console.log("Monthly Total Costs:", monthlyTotalCost);
+  $("#totalMonthly").append(monthlyTotalCost);
 }
 
 /*
@@ -45,14 +69,4 @@ ideas about how to create the monthly costs sum:
 -create a conditional that checks the result from above against the 
   20,000 budget threshold and, if over that threshold, 
   turns the background color red (not sure how to make js talk to css though!)
-*/
-
-let salaryArray = [];
-let monthlyCost = 0;
-
-function addMonthlyCost() {}
-
-console.log($(`#salary-input`).text());
-/* ideas about how to update the total when an employee is deleted
-
 */
