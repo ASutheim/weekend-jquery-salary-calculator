@@ -42,6 +42,14 @@ function handleSubmit(event) {
   console.log("New info submitted:", employeeInfo);
 
   updateSalaryTotal(allEmployeeInfo);
+
+  //This code clears the input fields
+
+  $("#first-name-input").val(" ");
+  $("#last-name-input").val(" ");
+  $("#id-input").val(" ");
+  $("#title-input").val(" ");
+  $("#salary-input").val(" ");
 }
 
 function handleDelete() {
