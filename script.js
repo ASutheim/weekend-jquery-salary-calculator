@@ -68,6 +68,9 @@ function updateSalaryTotal() {
   let monthlyTotalCost = annualTotalCost / 12;
   console.log("Monthly Total Costs:", monthlyTotalCost);
   $("#totalMonthly").append(`<p>Total Monthly Costs: ${monthlyTotalCost}</p>`);
+  if ((monthlyTotalCost > 20, 000)) {
+    ('document.getElementById(`#totalMonthly`).style.background = "red"');
+  }
   return monthlyTotalCost;
 }
 
