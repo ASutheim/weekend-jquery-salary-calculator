@@ -10,7 +10,7 @@
   <body>
     <header>Salary Calculator</header>
 
-    <div class="section">Add Employee</div>
+    <div class="entryFieldHeader">Add Employee</div>
     <!-- /*This section has 5 entry fields (first name, last name, ID, title, salary)
     followed by a submit button.*/ -->
 
@@ -23,12 +23,11 @@
       <button id="submit-btn">Submit</button>
     </form>
 
-    <div class="section">Employees</div>
+    <div class="chartHeader">Employees</div>
     <!-- /*This section contains a chart with six columns, one for each entry field
     above and one for a delete button*/ -->
-
     <table id="employee-info-table">
-      <tr id="header-row">
+      <tr class="header-row">
         <th id="first.name.column">First Name</th>
         <th id="last-name-column">Last Name</th>
         <th id="id-number-column">ID Number</th>
@@ -41,6 +40,7 @@
       </tfoot>
     </table>
 
+    <div id="monthly-costs-header">Total Monthly Costs:</div>
     <div id="totalMonthly" style="background: yellowgreen"></div>
     <!-- /*This sections contains the monthly total salary costs*/ -->
   </body>

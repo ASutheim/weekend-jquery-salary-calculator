@@ -12,7 +12,9 @@ let allEmployeeInfo = [];
 
 function handleSubmit(event) {
   //This code keeps the page from refreshing by default
+  console.log("hit it once");
   event.preventDefault();
+  console.log("twice");
 
   //This code grabs the literal values entered into the input fields and intializes them as js variable
   let firstNameInput = $("#first-name-input").val();
@@ -28,7 +30,7 @@ function handleSubmit(event) {
     <td>${idInput}</td>
     <td>${titleInput}</td>
     <td>${salaryInput}</td>
-    <td><button class = "delete-button">❌</button></td>`
+    <td><button class="delete-button">Delete</button></td>`
   );
 
   //This code saves the inputted info as a new object
@@ -79,6 +81,7 @@ function updateSalaryTotal() {
 
   let monthlyTotalCost = annualTotalCost / 12;
   console.log("Monthly Total Costs:", monthlyTotalCost);
+  $("#totalMonthly").append(monthlyTotalCost);
 
   //Checks monthly cost against budget and resets background color to red if cost is greater than 20k
 
